@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标拖拽</title>
+</head>
+<style>
+*{margin:0;
+  padding: 0;
+  }
+.box{
+	width: 200px;
+	height: 200px;
+	background:#fff;
+	position: absolute;
+	border:1px solid red;
+}
+</style>
+<body>
+	<div class="box">
+		
+	</div>
+</body>
+</html>
+<script>
+	let box=document.querySelector(".box");
+	 onmousedown=function(event){
+	 	event=event || window.event;
+	 	let x1=event.screenX;
+	 	let y1=event.screenY;
+	 	let x3=box.offsetLeft;
+	 	let y3=box.offsetTop;
+        // console.log(x3,y3);
+	 	onmousemove=function(event1){
+	 	  	event=event1 || window.event;
+	 	  let x2=event.screenX;
+	 	  let y2=event.screenY;
+	 	    x=x2-x1+x3;
+            y=y2-y1+y3;
+            box.setAttribute("style", `left:${x}px;top:${y}px`);
+	 	  }
+	 	  onmouseup=function(event2){
+          event=event2||window.event;
+          onmousemove="";
+          onmouseup="";
+	 	  }
+	 }
+</script>
